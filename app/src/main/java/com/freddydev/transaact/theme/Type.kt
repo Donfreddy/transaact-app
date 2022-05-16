@@ -1,4 +1,4 @@
-package com.freddydev.transaact.ui.theme
+package com.freddydev.transaact.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

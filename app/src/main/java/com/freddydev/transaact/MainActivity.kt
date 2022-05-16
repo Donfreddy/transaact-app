@@ -4,19 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.freddydev.transaact.ui.theme.TransaactTheme
+import com.freddydev.transaact.theme.TransaactTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +27,7 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       TransaactApp {
-
+        MainContent()
       }
     }
   }
@@ -39,8 +42,59 @@ fun TransaactApp(content: @Composable () -> Unit) {
 
 @Composable
 fun MainContent() {
-  CustomTopBar() {
+  Surface(
+    modifier = Modifier.fillMaxWidth(),
+    color = MaterialTheme.colors.primary
+  ) {
+    Column(
+      modifier = Modifier.fillMaxWidth(),
+      verticalArrangement = Arrangement.SpaceBetween
+    ) {
+      TopAppBar(
+        title = { Text("Bienvenue") },
+        navigationIcon = { },
+        actions = {},
+        elevation = 0.dp,
+        backgroundColor = Color.Transparent
+      )
+      OperatorCard()
+    }
+  }
+}
 
+@Composable
+fun OperatorCard() {
+  Card(
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(16.dp),
+    shape = RoundedCornerShape(CornerSize(12.dp)),
+    elevation = 4.dp,
+    backgroundColor = Color.White.copy(alpha = 0.1f)
+  ) {
+    Row(
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(16.dp),
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+      OperatorIcon()
+      Column(
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(6.dp),
+        horizontalAlignment = Alignment.Start,
+      ) {
+        Text(
+          text = "Operateur",
+          style = MaterialTheme.typography.h6
+        )
+        Text(
+          text = "Nom de l'operateur",
+          style = MaterialTheme.typography.body2
+        )
+      }
+    }
   }
 }
 
@@ -59,6 +113,14 @@ fun ToolbarWidget() {
       Text("Hello World")
     }
   }
+}
+
+@Composable
+fun OperatorIcon() {
+  Text(
+    text = "Operateur",
+    style = MaterialTheme.typography.h6
+  )
 }
 
 @Composable
@@ -106,6 +168,6 @@ fun CustomTopBar(modifier: Modifier = Modifier, content: @Composable () -> Unit)
 @Composable
 fun DefaultPreview() {
   TransaactApp {
-    MainContent()
+    //MainContent()
   }
 }
