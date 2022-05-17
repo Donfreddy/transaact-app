@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
@@ -33,8 +34,11 @@ fun TransaactTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
   val systemUiController = rememberSystemUiController()
 
   systemUiController.setSystemBarsColor(
-    color = TransaactBlue
+    color = Color.Black
   )
+//  systemUiController.setStatusBarColor(
+//    color = TransaactBlue
+//  )
 
   val colors = if (darkTheme) {
     DarkColorPalette
