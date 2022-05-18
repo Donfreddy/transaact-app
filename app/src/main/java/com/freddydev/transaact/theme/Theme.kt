@@ -9,13 +9,14 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-  primary = TransaactBlue,
-//  primaryVariant = Purple700,
+  primary = Purple1,
+  primaryVariant = Purple2,
+  background = BgColor,
 //  secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
-  primary = TransaactBlue,
+  primary = Purple1,
 //  primaryVariant = Purple700,
 //  secondary = Teal200
 
@@ -34,11 +35,11 @@ fun TransaactTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
   val systemUiController = rememberSystemUiController()
 
   systemUiController.setSystemBarsColor(
-    color = Color.Black
+    color = Black
   )
-//  systemUiController.setStatusBarColor(
-//    color = TransaactBlue
-//  )
+  systemUiController.setStatusBarColor(
+    color = Purple1
+  )
 
   val colors = if (darkTheme) {
     DarkColorPalette

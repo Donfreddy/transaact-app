@@ -1,37 +1,33 @@
 package com.freddydev.transaact.components
 
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.freddydev.transaact.OperatorIcon
 import com.freddydev.transaact.R
-import com.freddydev.transaact.components.bottomsheet.ChangeOperator
 import com.freddydev.transaact.icons.MyIconPack
 import com.freddydev.transaact.icons.myiconpack.Menu
-import com.freddydev.transaact.icons.myiconpack.Share
 import com.freddydev.transaact.theme.JosefinSans
-import com.freddydev.transaact.theme.TransaactTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MainAppBar() {
-  ChangeOperator { state, scope ->
+fun MainAppBar(state: ModalBottomSheetState, scope: CoroutineScope) {
+
     Surface(
       modifier = Modifier.fillMaxWidth(),
       color = MaterialTheme.colors.primary
@@ -65,7 +61,6 @@ fun MainAppBar() {
         OperatorCard(state = state, scope = scope)
       }
     }
-  }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -117,19 +112,30 @@ fun OperatorCard(state: ModalBottomSheetState, scope: CoroutineScope) {
   }
 }
 
-
-@Preview
 @Composable
-fun AppBarPreview() {
-  TransaactTheme {
-    MainAppBar()
+fun OperatorIcon(icon: Int) {
+  Surface(
+    modifier = Modifier,
+    shape = RoundedCornerShape(corner = CornerSize(10.dp)),
+    elevation = 2.dp,
+  ) {
+    Image(painter = painterResource(icon), contentDescription = "")
   }
 }
 
-@Preview
-@Composable
-fun AppBarPreviewDark() {
-  TransaactTheme(darkTheme = true) {
-    MainAppBar()
-  }
-}
+
+//@Preview
+//@Composable
+//fun AppBarPreview() {
+//  TransaactTheme {
+//    MainAppBar()
+//  }
+//}
+//
+//@Preview
+//@Composable
+//fun AppBarPreviewDark() {
+//  TransaactTheme(darkTheme = true) {
+//    MainAppBar()
+//  }
+//}

@@ -17,7 +17,7 @@ fun TransaactScaffold(
   TransaactTheme {
     ModalDrawer(
       drawerState = drawerState,
-      drawerContent = { TransaactDrawer() },
+      drawerContent = { MainDrawer() },
       content = content
     )
   }
