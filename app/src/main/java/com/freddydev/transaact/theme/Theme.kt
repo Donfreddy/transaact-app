@@ -1,4 +1,4 @@
-package com.freddydev.transaact.ui.theme
+package com.freddydev.transaact.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -34,8 +34,11 @@ fun TransaactTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
   val systemUiController = rememberSystemUiController()
 
   systemUiController.setSystemBarsColor(
-    color = TransaactBlue
+    color = Color.Black
   )
+//  systemUiController.setStatusBarColor(
+//    color = TransaactBlue
+//  )
 
   val colors = if (darkTheme) {
     DarkColorPalette
