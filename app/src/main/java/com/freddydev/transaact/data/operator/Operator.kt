@@ -1,4 +1,4 @@
-package com.freddydev.transaact.models
+package com.freddydev.transaact.data.operator
 
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Immutable

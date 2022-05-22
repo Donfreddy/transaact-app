@@ -11,12 +11,14 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 private val DarkColorPalette = darkColors(
   primary = Purple1,
   primaryVariant = Purple2,
-  background = BgColor,
 //  secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
   primary = Purple1,
+  background = BgColor,
+  onBackground = textColor,
+  onSurface = textColor
 //  primaryVariant = Purple700,
 //  secondary = Teal200
 
@@ -30,16 +32,19 @@ private val LightColorPalette = lightColors(
     */
 )
 
+/**
+ * A [MaterialTheme] for Transaac.
+ */
 @Composable
 fun TransaactTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-  val systemUiController = rememberSystemUiController()
-
-  systemUiController.setSystemBarsColor(
-    color = Black
-  )
-  systemUiController.setStatusBarColor(
-    color = Purple1
-  )
+//  val systemUiController = rememberSystemUiController()
+//
+//  systemUiController.setSystemBarsColor(
+//    color = Black
+//  )
+//  systemUiController.setStatusBarColor(
+//    color = Purple1
+//  )
 
   val colors = if (darkTheme) {
     DarkColorPalette

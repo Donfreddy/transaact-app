@@ -15,10 +15,10 @@ fun TransaactScaffold(
   content: @Composable () -> Unit
 ) {
   TransaactTheme {
-    ModalDrawer(
-      drawerState = drawerState,
-      drawerContent = { MainDrawer() },
-      content = content
-    )
+//    ModalDrawer(
+//      drawerState = drawerState,
+//      // drawerContent = { MainDrawer() },
+//      content = content
+//    )
   }
 }

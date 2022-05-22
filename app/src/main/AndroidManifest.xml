@@ -2,18 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.freddydev.transaact">
 
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+
   <application
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
-      android:theme="@style/Theme.Transaact">
+      android:theme="@style/Theme.Transaact.NoActionBar">
     <activity
-        android:name=".MainActivity"
-        android:exported="true"
+        android:name=".TransaactActivity"
+        android:windowSoftInputMode="adjustResize"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Transaact">
+        android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

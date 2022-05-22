@@ -8,6 +8,7 @@ val Black = Color(0xFF000000)
 
 // Transaact colors
 val BgColor = Color(0xFFE5E5E5)
+val textColor = Color(0xFF323232)
 val Red = Color(0xFFEB5757)
 val Yellow = Color(0xFFF2C94C)
 val Orange = Color(0xFFF2994A)

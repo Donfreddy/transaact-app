@@ -10,16 +10,18 @@ import com.freddydev.transaact.R
 
 // Set fonts
 val JosefinSans = FontFamily(
-  Font(R.font.josefin_sans_regular),
-  Font(R.font.josefin_sans_medium, FontWeight.W500),
-  Font(R.font.josefin_sans_semibold, FontWeight.W600)
+  fonts = listOf(
+    Font(R.font.josefin_sans_regular),
+    Font(R.font.josefin_sans_medium, FontWeight.W500),
+    Font(R.font.josefin_sans_semibold, FontWeight.W600)
+  )
 )
 
 // Set of Material typography styles to start with
 val Typography = Typography(
   defaultFontFamily = JosefinSans,
   body1 = TextStyle(
-    fontFamily = FontFamily.Default,
+    fontFamily = JosefinSans,
     fontWeight = FontWeight.Normal,
     fontSize = 16.sp
   )

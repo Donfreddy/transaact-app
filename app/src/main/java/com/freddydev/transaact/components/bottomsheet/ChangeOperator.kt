@@ -16,8 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.freddydev.transaact.components.OperatorIcon
-import com.freddydev.transaact.models.Operator
-import com.freddydev.transaact.models.operators
+import com.freddydev.transaact.data.operator.Operator
+import com.freddydev.transaact.data.operator.operators
+import com.freddydev.transaact.theme.White
 import kotlinx.coroutines.CoroutineScope
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -33,7 +34,8 @@ fun ChangeOperator(
 
   ModalBottomSheetLayout(
     sheetState = sate,
-    sheetBackgroundColor = MaterialTheme.colors.background,
+    sheetBackgroundColor = White,
+    // scrimColor = Color.Transparent,
     sheetShape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
     sheetElevation = 5.dp,
     sheetContent = {
@@ -108,7 +110,7 @@ fun ChangeOperatorCard(operator: Operator) {
           style = MaterialTheme.typography.subtitle1,
         )
         Text(
-          text = "Sélectionner",
+          text = "Sélectionner", // 'Choisi'
           style = MaterialTheme.typography.caption.copy(
             color = Color.Gray
           ),

@@ -4,4 +4,13 @@
   <style name="Theme.Transaact" parent="android:Theme.Material.Light.NoActionBar">
     <item name="android:statusBarColor">@color/purple_700</item>
   </style>
+
+
+  <style name="Theme.Transaact.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
+  <style name="Theme.Transaact.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+  <style name="Theme.Transaact.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

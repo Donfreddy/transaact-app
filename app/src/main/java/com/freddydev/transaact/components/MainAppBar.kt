@@ -53,7 +53,7 @@ fun MainAppBar(state: ModalBottomSheetState, scope: CoroutineScope) {
           IconButton(onClick = {}) {
             Icon(
               MyIconPack.Menu, modifier = Modifier
-                .size(30.dp), contentDescription = "Add"
+                .size(28.dp), contentDescription = "Add"
             )
           }
         }
