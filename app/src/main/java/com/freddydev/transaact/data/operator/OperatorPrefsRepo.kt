@@ -1,19 +1,32 @@
 package com.freddydev.transaact.data.operator
 
+import android.content.Context
 import android.util.Log
 import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import com.freddydev.transaact.operator_prefs.OperatorPrefs
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import java.io.IOException
 
+
 /**
  * Class that handles saving and retrieving operator preferences
  */
-class OperatorPrefsRepo(private val operatorPrefsStore: DataStore<OperatorPrefs>) {
+class OperatorPrefsRepo(private val ctx: Context) {
 
-  val operatorPrefsFlow: Flow<OperatorPrefs> = operatorPrefsStore.data
+  companion object {
+    private const val DATA_STORE_FILE_NAME = "operator_prefs.pb"
+
+    // Build the DataStore
+    private val Context.operatorPrefsStore: DataStore<OperatorPrefs> by dataStore(
+      fileName = DATA_STORE_FILE_NAME,
+      serializer = OperatorSerializer
+    )
+  }
+
+  val operatorPrefsFlow: Flow<OperatorPrefs> = ctx.operatorPrefsStore.data
     .catch { exception ->
       // dataStore.data throws an IOException when an error is encountered when reading data
       if (exception is IOException) {
@@ -29,7 +42,7 @@ class OperatorPrefsRepo(private val operatorPrefsStore: DataStore<OperatorPrefs>
    * @param operatorPrefs the operator preferences to save
    */
   suspend fun saveOperatorPrefs(operatorPrefs: Operator) {
-    operatorPrefsStore.updateData { operator ->
+    ctx.operatorPrefsStore.updateData { operator ->
       operator.toBuilder()
         .setId(operatorPrefs.id)
         .setName(operatorPrefs.name)
@@ -38,5 +51,5 @@ class OperatorPrefsRepo(private val operatorPrefsStore: DataStore<OperatorPrefs>
     }
   }
 
-  suspend fun fetchInitialPreferences() = operatorPrefsStore.data.first()
+  suspend fun fetchInitialPreferences() = ctx.operatorPrefsStore.data.first()
 }

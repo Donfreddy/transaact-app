@@ -13,13 +13,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.freddydev.transaact.components.OperatorIcon
 import com.freddydev.transaact.data.operator.Operator
+import com.freddydev.transaact.data.operator.OperatorPrefsRepo
 import com.freddydev.transaact.data.operator.operators
 import com.freddydev.transaact.theme.White
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -29,6 +32,8 @@ fun ChangeOperator(
     scope: CoroutineScope
   ) -> Unit,
 ) {
+  val mContext = LocalContext.current
+  val dataStore = OperatorPrefsRepo(mContext)
   val sate = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
   val scope = rememberCoroutineScope()
 
@@ -65,7 +70,15 @@ fun ChangeOperator(
           modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
         ) {
           items(operators.size) { index ->
-            ChangeOperatorCard(operator = operators[index])
+            val operator = operators[index]
+            ChangeOperatorCard(
+              operator = operator,
+              onClick = {
+                scope.launch {
+                  dataStore.saveOperatorPrefs(operator)
+                  sate.hide()
+                }
+              })
           }
         }
       }
@@ -74,8 +87,9 @@ fun ChangeOperator(
   )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ChangeOperatorCard(operator: Operator) {
+fun ChangeOperatorCard(operator: Operator, onClick: () -> Unit = {}) {
   Card(
     modifier = Modifier
       .fillMaxWidth()
@@ -86,7 +100,7 @@ fun ChangeOperatorCard(operator: Operator) {
         color = Color.Gray.copy(alpha = 0.2f),
         shape = RoundedCornerShape(CornerSize(12.dp)),
       )
-      .clickable {},
+      .clickable { onClick() },
     elevation = 4.dp,
   ) {
     Row(

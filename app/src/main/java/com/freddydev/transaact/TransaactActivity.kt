@@ -13,12 +13,15 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import com.freddydev.transaact.components.MainAppBar
 import com.freddydev.transaact.components.bottomsheet.ChangeOperator
 import com.freddydev.transaact.data.transaction.Transaction
@@ -29,15 +32,34 @@ import com.freddydev.transaact.theme.TransaactTheme
 class TransaactActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    // WindowCompat.setDecorFitsSystemWindows(window, false)
     setContent {
       TransaactApp {
         ChangeOperator { state, scope ->
           Scaffold(
-            topBar = { MainAppBar(state, scope) }
+            topBar = { MainAppBar(state, scope) },
+            drawerContent = {
+              DrawerContent()
+            },
           ) {
             MainContent()
           }
         }
+      }
+    }
+  }
+
+  @Composable
+  fun DrawerContent() {
+    // TODO("Not yet implemented")
+  }
+
+  // Render UI
+  private fun renderUi()  = setContent {
+    val showSettingsDialog = remember { mutableStateOf(false) }
+    TransaactTheme {
+      Surface(color = MaterialTheme.colors.background) {
+        MainContent()
       }
     }
   }

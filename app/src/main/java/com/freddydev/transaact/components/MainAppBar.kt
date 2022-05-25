@@ -1,5 +1,6 @@
 package com.freddydev.transaact.components
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -9,19 +10,27 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.liveData
 import com.freddydev.transaact.R
+import com.freddydev.transaact.data.operator.Operator
+import com.freddydev.transaact.data.operator.OperatorPrefsRepo
+import com.freddydev.transaact.data.operator.operators
 import com.freddydev.transaact.icons.MyIconPack
 import com.freddydev.transaact.icons.myiconpack.Menu
+import com.freddydev.transaact.operator_prefs.OperatorPrefs
 import com.freddydev.transaact.theme.JosefinSans
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -66,6 +75,19 @@ fun MainAppBar(state: ModalBottomSheetState, scope: CoroutineScope) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun OperatorCard(state: ModalBottomSheetState, scope: CoroutineScope) {
+  val mContext = LocalContext.current
+  // val mScope = rememberCoroutineScope()
+  // val dataStore = OperatorPrefsRepo(mContext)
+
+//  val operatorLiveData = liveData {
+//    emit(dataStore.fetchInitialPreferences())
+//  }
+
+  // val operator = operatorLiveData.value
+
+  //  println("################################### operator: $operator")
+
+
   Card(
     modifier = Modifier
       .fillMaxWidth()
@@ -97,7 +119,7 @@ fun OperatorCard(state: ModalBottomSheetState, scope: CoroutineScope) {
         verticalArrangement = Arrangement.Center
       ) {
         Text(
-          text = "MTN Money",
+          text = "Je t'en merde!",
           style = MaterialTheme.typography.subtitle1,
         )
         // Click to change operator

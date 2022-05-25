@@ -2,7 +2,6 @@ package com.freddydev.transaact.data.operator
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
-import com.freddydev.transaact.R
 import com.freddydev.transaact.operator_prefs.OperatorPrefs
 import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
