@@ -1,4 +1,4 @@
-package com.freddydev.transaact.components
+package com.freddydev.transaact.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

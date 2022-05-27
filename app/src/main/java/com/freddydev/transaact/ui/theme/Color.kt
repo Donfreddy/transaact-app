@@ -1,4 +1,4 @@
-package com.freddydev.transaact.theme
+package com.freddydev.transaact.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

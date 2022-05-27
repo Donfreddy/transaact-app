@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import com.freddydev.transaact.icons.MyIconPack
 import com.freddydev.transaact.icons.myiconpack.Call
 import com.freddydev.transaact.icons.myiconpack.Send
-import com.freddydev.transaact.theme.Orange
-import com.freddydev.transaact.theme.Purple1
+import com.freddydev.transaact.ui.theme.Orange
+import com.freddydev.transaact.ui.theme.Purple1
 import kotlinx.coroutines.flow.flowOf
 
 object TransactionRepository {

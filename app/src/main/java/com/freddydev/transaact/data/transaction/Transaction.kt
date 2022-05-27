@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.freddydev.transaact.icons.MyIconPack
 import com.freddydev.transaact.icons.myiconpack.*
-import com.freddydev.transaact.theme.*
+import com.freddydev.transaact.ui.theme.*
 
 data class Transaction(
   val id: Int,

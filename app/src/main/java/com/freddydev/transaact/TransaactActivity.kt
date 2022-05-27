@@ -21,12 +21,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.core.view.WindowCompat
-import com.freddydev.transaact.components.MainAppBar
-import com.freddydev.transaact.components.bottomsheet.ChangeOperator
+import com.freddydev.transaact.ui.components.MainAppBar
+import com.freddydev.transaact.ui.components.bottomsheet.ChangeOperator
 import com.freddydev.transaact.data.transaction.Transaction
 import com.freddydev.transaact.data.transaction.transactions
-import com.freddydev.transaact.theme.TransaactTheme
+import com.freddydev.transaact.ui.theme.TransaactTheme
 
 @OptIn(ExperimentalMaterialApi::class)
 class TransaactActivity : ComponentActivity() {

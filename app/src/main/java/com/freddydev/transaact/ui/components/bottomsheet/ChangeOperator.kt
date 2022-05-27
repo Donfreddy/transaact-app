@@ -1,4 +1,4 @@
-package com.freddydev.transaact.components.bottomsheet
+package com.freddydev.transaact.ui.components.bottomsheet
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -16,11 +16,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.freddydev.transaact.components.OperatorIcon
+import com.freddydev.transaact.ui.components.OperatorIcon
 import com.freddydev.transaact.data.operator.Operator
 import com.freddydev.transaact.data.operator.OperatorPrefsRepo
 import com.freddydev.transaact.data.operator.operators
-import com.freddydev.transaact.theme.White
+import com.freddydev.transaact.ui.theme.White
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.freddydev.transaact.components
+package com.freddydev.transaact.ui.components
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.tween
@@ -20,72 +20,72 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.liveData
 import com.freddydev.transaact.R
-import com.freddydev.transaact.data.operator.Operator
 import com.freddydev.transaact.data.operator.OperatorPrefsRepo
-import com.freddydev.transaact.data.operator.operators
 import com.freddydev.transaact.icons.MyIconPack
 import com.freddydev.transaact.icons.myiconpack.Menu
-import com.freddydev.transaact.operator_prefs.OperatorPrefs
-import com.freddydev.transaact.theme.JosefinSans
+import com.freddydev.transaact.ui.theme.JosefinSans
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainAppBar(state: ModalBottomSheetState, scope: CoroutineScope) {
 
-    Surface(
+  Surface(
+    modifier = Modifier.fillMaxWidth(),
+    color = MaterialTheme.colors.primary
+  ) {
+    Column(
       modifier = Modifier.fillMaxWidth(),
-      color = MaterialTheme.colors.primary
+      verticalArrangement = Arrangement.SpaceBetween
     ) {
-      Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceBetween
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(start = 16.dp, end = 10.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
       ) {
-        Row(
-          modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 10.dp),
-          horizontalArrangement = Arrangement.SpaceBetween,
-          verticalAlignment = Alignment.CenterVertically
-        ) {
-          Text("Logo", fontFamily = JosefinSans)
-          Text(
-            "Bienvenue",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = JosefinSans
+        Text("Logo", fontFamily = JosefinSans)
+        Text(
+          "Bienvenue",
+          fontSize = 24.sp,
+          fontWeight = FontWeight.Bold,
+          fontFamily = JosefinSans
+        )
+        IconButton(onClick = {}) {
+          Icon(
+            MyIconPack.Menu, modifier = Modifier
+              .size(28.dp), contentDescription = "Add"
           )
-          IconButton(onClick = {}) {
-            Icon(
-              MyIconPack.Menu, modifier = Modifier
-                .size(28.dp), contentDescription = "Add"
-            )
-          }
         }
-
-        OperatorCard(state = state, scope = scope)
       }
+
+      OperatorCard(state = state, scope = scope)
     }
+  }
 }
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun OperatorCard(state: ModalBottomSheetState, scope: CoroutineScope) {
   val mContext = LocalContext.current
-  // val mScope = rememberCoroutineScope()
-  // val dataStore = OperatorPrefsRepo(mContext)
+  val mScope = rememberCoroutineScope()
+  val dataStore = OperatorPrefsRepo(mContext)
+  // val operator: OperatorPrefs by dataStore.operatorPrefsFlow.collectAsState()
 
-//  val operatorLiveData = liveData {
-//    emit(dataStore.fetchInitialPreferences())
+//  mScope.launch {
+//    dataStore.operatorPrefsFlow.collect {
+//      println("################################### Start")
+//      println("################################### operator: ${it.name}")
+//      println("################################### End")
+//      operator = it
+//    }
 //  }
 
-  // val operator = operatorLiveData.value
 
-  //  println("################################### operator: $operator")
 
 
   Card(
@@ -119,7 +119,7 @@ fun OperatorCard(state: ModalBottomSheetState, scope: CoroutineScope) {
         verticalArrangement = Arrangement.Center
       ) {
         Text(
-          text = "Je t'en merde!",
+          text = "MTN MoMo",
           style = MaterialTheme.typography.subtitle1,
         )
         // Click to change operator

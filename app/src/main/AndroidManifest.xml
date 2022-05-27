@@ -13,9 +13,9 @@
       android:theme="@style/Theme.Transaact.NoActionBar">
     <activity
         android:name=".TransaactActivity"
-        android:windowSoftInputMode="adjustResize"
+        android:exported="true"
         android:label="@string/app_name"
-        android:exported="true">
+        android:windowSoftInputMode="adjustResize">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
