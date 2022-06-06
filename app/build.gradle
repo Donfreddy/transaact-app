@@ -4,15 +4,18 @@ plugins {
   id "com.google.protobuf" version "0.8.17"
 }
 
+// Import all versions from dependencies.gradle
+apply from: '../dependencies.gradle'
+
 android {
-  compileSdk 32
+  compileSdk versions.compileSdk
 
   defaultConfig {
     applicationId "com.freddydev.transaact"
-    minSdk 21
-    targetSdk 32
-    versionCode 1
-    versionName "1.0"
+    minSdk versions.minSdk
+    targetSdk versions.compileSdk
+    versionCode versions.versionCode
+    versionName versions.versionName
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables {
@@ -44,7 +47,7 @@ android {
     shaders false
   }
   composeOptions {
-    kotlinCompilerExtensionVersion compose_version
+    kotlinCompilerExtensionVersion versions.composeVersion
   }
   packagingOptions {
     resources {
@@ -56,45 +59,53 @@ android {
 
 dependencies {
 
-  implementation "androidx.core:core-ktx:$ktx_version"
-  implementation "androidx.fragment:fragment-ktx:$fragment_version"
-  implementation "com.google.android.material:material:$material_version"
-  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
-  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-  implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-  implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+  // Base
+  implementation 'androidx.core:core-ktx:1.8.0'
+  implementation 'androidx.appcompat:appcompat:1.4.2'
+  implementation "androidx.window:window:1.1.0-alpha02"
+  implementation "androidx.activity:activity-ktx:$versions.activityVersion"
+  implementation "androidx.activity:activity-compose:$versions.activityVersion"
 
   // Accompanist libraries
-  implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
-  implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+  implementation "com.google.accompanist:accompanist-permissions:$versions.accompanistVersion"
+  implementation "com.google.accompanist:accompanist-systemuicontroller:$versions.accompanistVersion"
 
   // Compose
-  implementation "androidx.compose.ui:ui:$compose_version"
-  implementation "androidx.compose.material:material:$compose_version"
-  implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-  implementation "androidx.activity:activity-compose:$activity_compose_version"
-  implementation "androidx.navigation:navigation-compose:$navigation_compose_version"
-  implementation "androidx.compose.material:material-icons-extended:$compose_version"
+  implementation "androidx.compose.ui:ui:$versions.composeVersion"
+  implementation "androidx.compose.material:material:$versions.composeVersion"
+  implementation "androidx.compose.ui:ui-tooling-preview:$versions.composeVersion"
+  implementation "androidx.navigation:navigation-compose:$versions.composeNavVersion"
+  implementation "androidx.compose.runtime:runtime-livedata:$versions.composeVersion"
+  implementation "androidx.compose.foundation:foundation-layout:$versions.composeVersion"
+  implementation "androidx.compose.material:material-icons-extended:$versions.composeVersion"
+
+  // Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutinesVersion"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
+
+  // Lifecycle
+  implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycleVersion"
 
   // Preferences DataStore
-  implementation "androidx.datastore:datastore:$data_store_version"
-//    implementation "androidx.datastore:datastore-preferences:$data_store_version"
-//    implementation  "androidx.datastore:datastore-core:$data_store_version"
+  implementation "androidx.datastore:datastore:$versions.datastoreVersion"
 
   // protobuf
-  implementation "com.google.protobuf:protobuf-javalite:$protobuf_version"
+  implementation "com.google.protobuf:protobuf-javalite:$versions.protobufVersion"
 
   // Testing dependencies
-  testImplementation "junit:junit:$junit_version"
-  androidTestImplementation "androidx.test.ext:junit:$test_ext_junit"
+  testImplementation "junit:junit:$versions.junitVersion"
+  androidTestImplementation "androidx.test.ext:junit:$versions.testExtJunitVersion"
   androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'
-  androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-  androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+  androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoVersion"
+  androidTestImplementation "androidx.test.espresso:espresso-contrib:$versions.espressoVersion"
 
   // Compose testing dependencies
-  debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-  debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+  debugImplementation "androidx.compose.ui:ui-tooling:$versions.composeVersion"
+  debugImplementation "androidx.compose.ui:ui-test-manifest:$versions.composeVersion"
+  androidTestImplementation "androidx.compose.ui:ui-test-junit4:$versions.composeVersion"
 }
 
 protobuf {

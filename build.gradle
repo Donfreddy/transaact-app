@@ -1,36 +1,14 @@
 buildscript {
-    // Define versions in a single place
-    ext {
-        // Sdk and tools
-        compileSdkVersion = 32
-        minSdkVersion = 21
-        targetSdkVersion = 32
-
-        // Dependencies and their versions
-        compose_version = '1.0.1'
-        accompanist_version = '0.17.0'
-        coroutines_version = "1.5.2"
-        fragment_version = '1.4.1'
-        ktx_version = '1.7.0'
-        activity_compose_version = '1.4.0'
-        navigation_compose_version = '2.5.0-rc01'
-        material_version = '1.6.0'
-        lifecycle_version = '2.4.1'
-        lifecycle_extensions_version = '2.2.0'
-        data_store_version = '1.0.0'
-        protobuf_version = '3.19.4'
-
-        espresso_version = '3.4.0'
-        test_ext_junit = '2.3.1'
-        junit_version = '4.13.2'
-    }
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+  // Define versions in a single place
+  ext {}
+}
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.1.1' apply false
-    id 'com.android.library' version '7.1.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.5.21' apply false
+  id 'com.android.application' version '7.1.1' apply false
+  id 'com.android.library' version '7.1.1' apply false
+  id 'org.jetbrains.kotlin.android' version '1.5.21' apply false
 }
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
+  delete rootProject.buildDir
 }
